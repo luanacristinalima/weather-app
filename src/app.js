@@ -10,6 +10,7 @@ function search(event) {
 }
 
 function showWeather(response) {
+  console.log(response.data);
   document.querySelector("#currentCity").innerHTML = response.data.city;
 
   document.querySelector("#currentTemp").innerHTML = Math.round(
@@ -27,8 +28,8 @@ function showWeather(response) {
     "#currentWind"
   ).innerHTML = `${response.data.wind.speed}km/h`;
 
-  document.querySelector("#currentIcon").innerHTML =
-    response.data.condition.icon_url;
+  let currentDate = document.querySelector("#currentDay");
+  currentDate.innerHTML = formatDate(response.data.time * 1000);
 }
 
 function currentWeather(event) {
@@ -44,28 +45,26 @@ function showPosition(position) {
   axios.get(`${apiUrl}`).then(showWeather);
 }
 
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[date.getDay()];
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${day}, ${hours}:${minutes}`;
+}
+
 let searchCity = document.querySelector("#search-form");
 searchCity.addEventListener("submit", search);
 
 let currentCity = document.querySelector("#currentButton");
 currentCity.addEventListener("click", currentWeather);
-
-let now = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-let hours = now.getHours();
-let minutes = now.getMinutes();
-
-let currentDate = document.querySelector("#currentDay");
-currentDate.innerHTML = `${day}, ${hours}:${minutes}`;
 
 // change celsius to fahrenheit
 let isFahrenheit = false;
