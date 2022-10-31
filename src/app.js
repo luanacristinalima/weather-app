@@ -1,12 +1,15 @@
-function search(event) {
-  event.preventDefault();
-  let searchInput = document.querySelector("#city-input");
-  let city = `${searchInput.value}`;
-
+function renderWeather(city) {
   let apiKey = "t62d70oe1100008354b8807464af7fad";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
 
   axios.get(`${apiUrl}`).then(showWeather);
+}
+
+function search(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#city-input");
+  let city = `${searchInput.value}`;
+  renderWeather(city);
 }
 
 function showWeather(response) {
@@ -65,6 +68,8 @@ searchCity.addEventListener("submit", search);
 
 let currentCity = document.querySelector("#currentButton");
 currentCity.addEventListener("click", currentWeather);
+
+renderWeather("Castelo Branco");
 
 // change celsius to fahrenheit
 let isFahrenheit = false;
