@@ -26,76 +26,74 @@
   </head>
   <body>
     <div class="container">
-      <div class="card card-wrapper">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-10">
-              <form class="d-flex" id="search-form">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Enter a city"
-                  aria-label="Search"
-                  id="city-input"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-              </form>
-            </div>
-            <div class="col-2">
-              <button
-                class="btn btn-outline-success current-location"
-                id="currentButton"
-                type="submit"
-              >
-                Current
+      <div class="card-wrapper">
+        <div class="row">
+          <div class="col-10">
+            <form class="d-flex" id="search-form">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Enter a city"
+                aria-label="Search"
+                id="city-input"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
               </button>
-            </div>
+            </form>
           </div>
-          <header>
-            <h1 id="currentCity">Castelo Branco</h1>
-            <h2 id="currentDay">Sat, Oct 22</h2>
-          </header>
-          <div class="row">
-            <div class="col-4">
-              <div>
-                <i class="fa-solid fa-cloud-showers-heavy rainy-icon"></i>
-              </div>
-            </div>
-            <div class="col-6 weather-now">
-              <h3 id="currentWeather">Rainy</h3>
-              <h4>
-                <span id="currentTemp">14</span>
-                <span class="units">
-                  <a href="#" id="celsius">°C</a>
-                  |
-                  <a href="#" id="fahrenheit">°F</a>
-                </span>
-              </h4>
-            </div>
-            <div class="col-2">
-              <p class="weather-parameters">Humidity:</p>
-              <p>
-                <i class="fa-solid fa-droplet icons"></i>
-                <span id="currentHumidity">93%</span>
-              </p>
-              <p class="weather-parameters">Wind:</p>
-              <p>
-                <i class="fa-solid fa-wind icons"></i>
-                <span id="currentWind">90km/h</span>
-              </p>
-            </div>
+          <div class="col-2">
+            <button
+              class="btn btn-outline-success current-location"
+              id="currentButton"
+              type="submit"
+            >
+              Current
+            </button>
           </div>
         </div>
-        <footer>
-          <a
-            href="https://github.com/luanacristinalima/weather-app"
-            target="_blank"
-            >Open-sourse code</a
-          >, by Luana Lima
-        </footer>
+        <header>
+          <h1 id="currentCity">Castelo Branco</h1>
+          <h2 id="currentDay">Sat, Oct 22</h2>
+        </header>
+        <div class="row">
+          <div class="col-4">
+            <div>
+              <i class="fa-solid fa-cloud-showers-heavy weather-icon"></i>
+            </div>
+          </div>
+          <div class="col-6 weather-now">
+            <h3 id="currentWeather">Rainy</h3>
+            <h4>
+              <span id="currentTemp">14</span>
+              <span class="units">
+                <a href="#" id="celsius">°C</a>
+                |
+                <a href="#" id="fahrenheit">°F</a>
+              </span>
+            </h4>
+          </div>
+          <div class="col-2">
+            <p class="weather-parameters">Humidity:</p>
+            <p>
+              <i class="fa-solid fa-droplet icons"></i>
+              <span id="currentHumidity">93%</span>
+            </p>
+            <p class="weather-parameters">Wind:</p>
+            <p>
+              <i class="fa-solid fa-wind icons"></i>
+              <span id="currentWind">90km/h</span>
+            </p>
+          </div>
+        </div>
       </div>
+      <footer>
+        <a
+          href="https://github.com/luanacristinalima/weather-app"
+          target="_blank"
+          >Open-sourse code</a
+        >, by Luana Lima
+      </footer>
     </div>
     <script src="src/app.js"></script>
   </body>

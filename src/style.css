@@ -32,20 +32,23 @@ p {
 }
 footer {
   text-align: center;
-  margin: 20px 0;
+  margin-top: 10px;
 }
 
 .card-wrapper {
   margin: 35px auto 0;
   max-width: 70%;
+  padding: 20px;
+  border: 1px solid #dadde1;
+  border-radius: 10px;
   font-family: "Raleway", sans-serif;
 }
 
-.rainy-icon {
-  font-size: 150px;
+.weather-icon {
+  font-size: 100px;
   position: relative;
   left: 60px;
-  top: 10px;
+  top: 20px;
   color: #9e9fa8;
 }
 
@@ -66,29 +69,6 @@ footer {
   margin-bottom: 0;
 }
 
-.future-dates {
-  text-align: center;
-}
-
-.small-card-wrapper {
-  margin: 50px 10px 0;
-  background-color: rgba(0, 0, 0, 0.125);
-}
-
-.weather-icon {
-  font-size: 70px;
-  color: #9e9fa8;
-  position: relative;
-  left: 30px;
-}
-
-.degrees {
-  font-weight: 500;
-}
-.future-dates-weather {
-  margin-bottom: 0;
-  font-weight: 500;
-}
 .units {
   font-size: 20px;
   position: relative;
