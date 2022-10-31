@@ -89,3 +89,8 @@ footer {
   margin-bottom: 0;
   font-weight: 500;
 }
+.units {
+  font-size: 20px;
+  position: relative;
+  bottom: 15px;
+}

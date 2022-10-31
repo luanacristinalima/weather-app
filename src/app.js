@@ -12,7 +12,7 @@ function search(event) {
 function showWeather(response) {
   let city = document.querySelector("#currentCity");
   city.innerHTML = response.data.name;
-  let temperature = document.querySelector("#currentTemperature");
+  let temperature = document.querySelector("#currentTemp");
   temperature.innerHTML = Math.round(response.data.main.temp) + "°C";
   let description = document.querySelector("#currentWeather");
   description.innerHTML = response.data.weather[0].description;
@@ -57,3 +57,42 @@ let minutes = now.getMinutes();
 
 let currentDate = document.querySelector("#currentDay");
 currentDate.innerHTML = `${day}, ${hours}:${minutes}`;
+
+// change to fahrenheit
+let isFahrenheit = false;
+
+function convertToFahrenheit(celsius) {
+  let fahrenheit = (celsius * 9) / 5 + 32;
+  return Math.round(fahrenheit);
+}
+function changeToFahrenheit(event) {
+  event.preventDefault();
+  if (isFahrenheit === false) {
+    let temperature = document.querySelector("#currentTemp");
+    temperature.innerHTML = `${convertToFahrenheit(
+      Number(temperature.innerHTML)
+    )}`;
+    isFahrenheit = true;
+  }
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", changeToFahrenheit);
+
+function convertToCelsius(fahrenheit) {
+  let celsius = ((fahrenheit - 32) * 5) / 9;
+  return Math.round(celsius);
+}
+function changeToCelsius(event) {
+  event.preventDefault();
+  if (isFahrenheit === true) {
+    let temperature = document.querySelector("#currentTemp");
+    temperature.innerHTML = `${convertToCelsius(
+      Number(temperature.innerHTML)
+    )}`;
+    isFahrenheit = false;
+  }
+}
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", changeToCelsius);
