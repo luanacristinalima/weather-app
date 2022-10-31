@@ -4,7 +4,142 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/56df87b2ea.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;500;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="card card-wrapper">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-10">
+              <form class="d-flex" id="search-form">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Enter a city"
+                  aria-label="Search"
+                  id="city-input"
+                />
+                <button class="btn btn-outline-success" type="submit">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </form>
+            </div>
+            <div class="col-2">
+              <button
+                class="btn btn-outline-success current-location"
+                id="currentButton"
+                type="submit"
+              >
+                Current
+              </button>
+            </div>
+          </div>
+          <header>
+            <h1 id="currentCity">Castelo Branco</h1>
+            <h2 id="currentDay">Sat, Oct 22</h2>
+          </header>
+          <div class="row">
+            <div class="col-4">
+              <div>
+                <i class="fa-solid fa-cloud-showers-heavy rainy-icon"></i>
+              </div>
+            </div>
+            <div class="col-6 weather-now">
+              <h3 id="currentWeather">Rainy</h3>
+              <h4 id="currentTemperature">14°C</h4>
+            </div>
+            <div class="col-2">
+              <p class="weather-parameters">Humidity:</p>
+              <p>
+                <i class="fa-solid fa-droplet icons"></i>
+                <span id="currentHumidity">93%</span>
+              </p>
+              <p class="weather-parameters">Wind:</p>
+              <p>
+                <i class="fa-solid fa-wind icons"></i>
+                <span id="currentWind">90km/h</span>
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col card small-card-wrapper">
+              <div class="future-dates">
+                <h1>Sun</h1>
+                <h2>Oct 23</h2>
+              </div>
+              <div class="weather-icon">
+                <i class="fa-solid fa-cloud-rain"></i>
+              </div>
+              <p class="future-dates-weather">Light Rain</p>
+              <p><span class="degrees">18°C</span> 13°C</p>
+            </div>
+            <div class="col card small-card-wrapper">
+              <div class="future-dates">
+                <h1>Mon</h1>
+                <h2>Oct 24</h2>
+              </div>
+              <div class="weather-icon">
+                <i class="fa-solid fa-cloud-sun"></i>
+              </div>
+              <p class="future-dates-weather">Partly Cloudy</p>
+              <p><span class="degrees">19°C</span> 13°C</p>
+            </div>
+            <div class="col card small-card-wrapper">
+              <div class="future-dates">
+                <h1>Tue</h1>
+                <h2>Oct 25</h2>
+              </div>
+              <div class="weather-icon">
+                <i class="fa-solid fa-cloud-rain"></i>
+              </div>
+              <p class="future-dates-weather">Light Rain</p>
+              <p><span class="degrees">21°C</span> 14°C</p>
+            </div>
+            <div class="col card small-card-wrapper">
+              <div class="future-dates">
+                <h1>Wed</h1>
+                <h2>Oct 26</h2>
+              </div>
+              <div class="weather-icon">
+                <i class="fa-solid fa-cloud-showers-heavy"></i>
+              </div>
+              <p class="future-dates-weather">Rainy</p>
+              <p><span class="degrees">22°C</span> 13°C</p>
+            </div>
+            <div class="col card small-card-wrapper">
+              <div class="future-dates">
+                <h1>Thu</h1>
+                <h2>Oct 27</h2>
+              </div>
+              <div class="weather-icon">
+                <i class="fa-solid fa-cloud-bolt"></i>
+              </div>
+              <p class="future-dates-weather">Thunderstorms</p>
+              <p><span class="degrees">22°C</span> 15°C</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/app.js"></script>
+  </body>
 </html>

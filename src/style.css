@@ -1,0 +1,87 @@
+h2,
+h4,
+p {
+  font-weight: 200;
+}
+
+header {
+  margin: 20px 0;
+}
+
+h1 {
+  font-size: 36px;
+  color: #3c2a4d;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-weight: 800;
+  font-size: 36px;
+}
+
+h4 {
+  font-size: 48px;
+}
+
+p {
+  text-align: center;
+}
+
+.card-wrapper {
+  margin: 35px auto 0;
+  max-width: 70%;
+  font-family: "Raleway", sans-serif;
+}
+
+.rainy-icon {
+  font-size: 150px;
+  position: relative;
+  left: 60px;
+  top: 10px;
+  color: #9e9fa8;
+}
+
+.icons {
+  color: #9e9fa8;
+}
+
+.current-location {
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.weather-now {
+  padding-top: 30px;
+  text-transform: capitalize;
+}
+.weather-parameters {
+  margin-bottom: 0;
+}
+
+.future-dates {
+  text-align: center;
+}
+
+.small-card-wrapper {
+  margin: 50px 10px 0;
+  background-color: rgba(0, 0, 0, 0.125);
+}
+
+.weather-icon {
+  font-size: 70px;
+  color: #9e9fa8;
+  position: relative;
+  left: 30px;
+}
+
+.degrees {
+  font-weight: 500;
+}
+.future-dates-weather {
+  margin-bottom: 0;
+  font-weight: 500;
+}
