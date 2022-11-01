@@ -8,10 +8,6 @@ function renderWeather(city) {
 function showWeather(response) {
   document.querySelector("#currentCity").innerHTML = response.data.city;
 
-  document.querySelector("#currentTemp").innerHTML = Math.round(
-    response.data.temperature.current
-  );
-
   document.querySelector("#currentWeather").innerHTML =
     response.data.condition.description;
 
@@ -33,6 +29,16 @@ function showWeather(response) {
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
   iconElement.setAttribute("alt", response.data.condition.description);
+
+  if (isFahrenheit === false) {
+    document.querySelector("#currentTemp").innerHTML = Math.round(
+      response.data.temperature.current
+    );
+  } else {
+    document.querySelector("#currentTemp").innerHTML = convertToFahrenheit(
+      response.data.temperature.current
+    );
+  }
 }
 
 function search(event) {
@@ -70,17 +76,6 @@ function formatDate(timestamp) {
   return `${day}, ${hours}:${minutes}`;
 }
 
-let searchCity = document.querySelector("#search-form");
-searchCity.addEventListener("submit", search);
-
-let currentCity = document.querySelector("#currentButton");
-currentCity.addEventListener("click", currentWeather);
-
-renderWeather("Castelo Branco");
-
-// change celsius to fahrenheit
-let isFahrenheit = false;
-
 function convertToFahrenheit(celsius) {
   let fahrenheit = (celsius * 9) / 5 + 32;
   return Math.round(fahrenheit);
@@ -110,9 +105,18 @@ function changeToCelsius(event) {
     isFahrenheit = false;
   }
 }
+let searchCity = document.querySelector("#search-form");
+searchCity.addEventListener("submit", search);
+
+let currentCity = document.querySelector("#currentButton");
+currentCity.addEventListener("click", currentWeather);
 
 let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", changeToFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", changeToCelsius);
+
+let isFahrenheit = false;
+
+renderWeather("Castelo Branco");
