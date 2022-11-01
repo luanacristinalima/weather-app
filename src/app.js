@@ -46,6 +46,7 @@ function search(event) {
   let searchInput = document.querySelector("#city-input");
   let city = `${searchInput.value}`;
   renderWeather(city);
+  renderForecast(city);
 }
 
 function currentWeather(event) {
@@ -105,7 +106,9 @@ function changeToCelsius(event) {
     isFahrenheit = false;
   }
 }
-function displayForecast() {
+
+function displayForecast(response) {
+  console.log(response.data);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -130,7 +133,12 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
-displayForecast();
+function renderForecast(city) {
+  let apiKey = "t62d70oe1100008354b8807464af7fad";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+
+  axios.get(`${apiUrl}`).then(displayForecast);
+}
 
 let searchCity = document.querySelector("#search-form");
 searchCity.addEventListener("submit", search);
@@ -147,3 +155,4 @@ celsiusLink.addEventListener("click", changeToCelsius);
 let isFahrenheit = false;
 
 renderWeather("Castelo Branco");
+renderForecast("Castelo Branco");
