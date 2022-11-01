@@ -55,7 +55,6 @@ a:hover {
   position: relative;
   left: 20px;
   top: 35px;
-  color: #9e9fa8;
 }
 
 .icons {
@@ -86,4 +85,32 @@ a:hover {
 }
 .units .active:hover {
   text-decoration: none;
+}
+
+.future-dates {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.future-dates h1,
+h2 {
+  font-size: 24px;
+}
+
+.small-card-wrapper {
+  margin: 20px 10px 0;
+  background-color: rgba(0, 0, 0, 0.125);
+}
+
+.degrees {
+  font-weight: 500;
+}
+.future-dates-weather {
+  margin-bottom: 0;
+  font-weight: 500;
+}
+.small-card-wrapper .weather-icon {
+  position: relative;
+  left: 0;
+  top: 0;
 }
