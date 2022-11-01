@@ -13,7 +13,6 @@ function search(event) {
 }
 
 function showWeather(response) {
-  console.log(response.data);
   document.querySelector("#currentCity").innerHTML = response.data.city;
 
   document.querySelector("#currentTemp").innerHTML = Math.round(
@@ -31,8 +30,16 @@ function showWeather(response) {
     "#currentWind"
   ).innerHTML = `${response.data.wind.speed}km/h`;
 
-  let currentDate = document.querySelector("#currentDay");
-  currentDate.innerHTML = formatDate(response.data.time * 1000);
+  document.querySelector("#currentDay").innerHTML = formatDate(
+    response.data.time * 1000
+  );
+
+  let iconElement = document.querySelector("#current-icon");
+  iconElement.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+  );
+  iconElement.setAttribute("alt", response.data.condition.description);
 }
 
 function currentWeather(event) {
