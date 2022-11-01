@@ -105,6 +105,33 @@ function changeToCelsius(event) {
     isFahrenheit = false;
   }
 }
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col card small-card-wrapper">
+        <div class="future-dates">
+          <h1>${day}</h1>
+          <h2>Oct 23</h2>
+        </div>
+        <img
+          src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+          alt=""
+          class="weather-icon"
+        />
+        <p class="future-dates-weather">Light Rain</p>
+        <p><span class="degrees">18°C</span> 13°C</p>
+      </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+displayForecast();
+
 let searchCity = document.querySelector("#search-form");
 searchCity.addEventListener("submit", search);
 
