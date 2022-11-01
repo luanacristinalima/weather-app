@@ -67,6 +67,22 @@ function formatDate(timestamp) {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let day = days[date.getDay()];
   let hours = date.getHours();
+  let currentDate = date.getDate();
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let currentMonth = months[date.getMonth()];
   if (hours < 10) {
     hours = `0${hours}`;
   }
@@ -74,7 +90,10 @@ function formatDate(timestamp) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  return `${day}, ${hours}:${minutes}`;
+  if (currentDate < 10) {
+    currentDate = `0${currentDate}`;
+  }
+  return `${day}, ${currentMonth} ${currentDate}, ${hours}:${minutes}`;
 }
 
 function convertToFahrenheit(celsius) {
@@ -107,27 +126,66 @@ function changeToCelsius(event) {
   }
 }
 
+function formatDayForecast(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let currentDate = date.getDate();
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let currentMonth = months[date.getMonth()];
+  if (currentDate < 10) {
+    currentDate = `0${currentDate}`;
+  }
+  return `${currentMonth} ${currentDate}`;
+}
+
+function formatWeekDayForecast(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
 function displayForecast(response) {
   console.log(response.data);
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col card small-card-wrapper">
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6 && index > 0) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col card small-card-wrapper">
         <div class="future-dates">
-          <h1>${day}</h1>
-          <h2>Oct 23</h2>
+          <h1>${formatWeekDayForecast(forecastDay.time)}</h1>
+          <h2>${formatDayForecast(forecastDay.time)}</h2>
         </div>
         <img
-          src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+          src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+            forecastDay.condition.icon
+          }.png"
           alt=""
           class="weather-icon"
         />
-        <p class="future-dates-weather">Light Rain</p>
-        <p><span class="degrees">18°C</span> 13°C</p>
+        <p class="future-dates-weather">${forecastDay.condition.description}</p>
+        <p><span class="degrees">${Math.round(
+          forecastDay.temperature.maximum
+        )}˚C </span> ${Math.round(forecastDay.temperature.minimum)}˚C</p>
       </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
