@@ -105,8 +105,19 @@ function changeToFahrenheit(event) {
   if (isFahrenheit === false) {
     let temperature = document.querySelector("#currentTemp");
     temperature.innerHTML = `${convertToFahrenheit(temperature.innerHTML)}`;
+
     document.querySelector("#fahrenheit").classList.add("active");
     document.querySelector("#celsius").classList.remove("active");
+
+    let forecastElement = document.querySelectorAll(".conversion-degrees");
+    forecastElement.forEach(function (forecastDay) {
+      forecastDay.innerHTML = `${convertToFahrenheit(forecastDay.innerHTML)} `;
+    });
+    let degreesElement = document.querySelectorAll(".celsius-degrees");
+    degreesElement.forEach(function (forecastDay) {
+      forecastDay.innerHTML = " ˚F";
+    });
+
     isFahrenheit = true;
   }
 }
@@ -120,8 +131,19 @@ function changeToCelsius(event) {
   if (isFahrenheit === true) {
     let temperature = document.querySelector("#currentTemp");
     temperature.innerHTML = `${convertToCelsius(temperature.innerHTML)}`;
+
     document.querySelector("#fahrenheit").classList.remove("active");
     document.querySelector("#celsius").classList.add("active");
+
+    let forecastElement = document.querySelectorAll(".conversion-degrees");
+    forecastElement.forEach(function (forecastDay) {
+      forecastDay.innerHTML = `${convertToCelsius(forecastDay.innerHTML)} `;
+    });
+    let degreesElement = document.querySelectorAll(".celsius-degrees");
+    degreesElement.forEach(function (forecastDay) {
+      forecastDay.innerHTML = " ˚C";
+    });
+
     isFahrenheit = false;
   }
 }
@@ -158,7 +180,6 @@ function formatWeekDayForecast(timestamp) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
   let forecast = response.data.daily;
 
   let forecastElement = document.querySelector("#forecast");
@@ -181,9 +202,11 @@ function displayForecast(response) {
           class="weather-icon"
         />
         <p class="future-dates-weather">${forecastDay.condition.description}</p>
-        <p><span class="degrees">${Math.round(
+        <p><span class="degrees conversion-degrees">${Math.round(
           forecastDay.temperature.maximum
-        )}˚C </span> ${Math.round(forecastDay.temperature.minimum)}˚C</p>
+        )} </span><span class="degrees celsius-degrees">˚C</span><span class="conversion-degrees"> ${Math.round(
+          forecastDay.temperature.minimum
+        )}</span><span class="celsius-degrees">˚C</span></p>
       </div>`;
     }
   });

@@ -53,8 +53,9 @@ a:hover {
 
 .weather-icon {
   position: relative;
-  left: 20px;
-  top: 35px;
+  left: 10px;
+  top: 15px;
+  width: 100%;
 }
 
 .icons {
