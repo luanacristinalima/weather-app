@@ -34,6 +34,13 @@ footer {
   text-align: center;
   margin-top: 10px;
 }
+a {
+  text-decoration: none;
+  transition: all 200ms ease-in-out;
+}
+a:hover {
+  text-decoration: underline;
+}
 
 .card-wrapper {
   margin: 35px auto 0;
@@ -72,4 +79,11 @@ footer {
   font-size: 20px;
   position: relative;
   bottom: 15px;
+}
+.units .active {
+  color: black;
+  cursor: default;
+}
+.units .active:hover {
+  text-decoration: none;
 }

@@ -5,13 +5,6 @@ function renderWeather(city) {
   axios.get(`${apiUrl}`).then(showWeather);
 }
 
-function search(event) {
-  event.preventDefault();
-  let searchInput = document.querySelector("#city-input");
-  let city = `${searchInput.value}`;
-  renderWeather(city);
-}
-
 function showWeather(response) {
   document.querySelector("#currentCity").innerHTML = response.data.city;
 
@@ -40,6 +33,13 @@ function showWeather(response) {
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
   iconElement.setAttribute("alt", response.data.condition.description);
+}
+
+function search(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#city-input");
+  let city = `${searchInput.value}`;
+  renderWeather(city);
 }
 
 function currentWeather(event) {
@@ -89,15 +89,12 @@ function changeToFahrenheit(event) {
   event.preventDefault();
   if (isFahrenheit === false) {
     let temperature = document.querySelector("#currentTemp");
-    temperature.innerHTML = `${convertToFahrenheit(
-      Number(temperature.innerHTML)
-    )}`;
+    temperature.innerHTML = `${convertToFahrenheit(temperature.innerHTML)}`;
+    document.querySelector("#fahrenheit").classList.add("active");
+    document.querySelector("#celsius").classList.remove("active");
     isFahrenheit = true;
   }
 }
-
-let fahrenheitLink = document.querySelector("#fahrenheit");
-fahrenheitLink.addEventListener("click", changeToFahrenheit);
 
 function convertToCelsius(fahrenheit) {
   let celsius = ((fahrenheit - 32) * 5) / 9;
@@ -107,12 +104,15 @@ function changeToCelsius(event) {
   event.preventDefault();
   if (isFahrenheit === true) {
     let temperature = document.querySelector("#currentTemp");
-    temperature.innerHTML = `${convertToCelsius(
-      Number(temperature.innerHTML)
-    )}`;
+    temperature.innerHTML = `${convertToCelsius(temperature.innerHTML)}`;
+    document.querySelector("#fahrenheit").classList.remove("active");
+    document.querySelector("#celsius").classList.add("active");
     isFahrenheit = false;
   }
 }
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", changeToFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", changeToCelsius);
