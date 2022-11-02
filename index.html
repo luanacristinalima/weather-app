@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;500;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;800&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
@@ -37,14 +37,17 @@
                 aria-label="Search"
                 id="city-input"
               />
-              <button class="btn btn-outline-success" type="submit">
+              <button class="btn btn-outline-primary" type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </button>
             </form>
           </div>
         </div>
         <header>
-          <h1 id="currentCity"></h1>
+          <h1>
+            <i class="fa-solid fa-location-dot"></i>
+            <span id="currentCity"></span>
+          </h1>
           <h2 id="currentDay"></h2>
         </header>
         <div class="row">
