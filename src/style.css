@@ -62,11 +62,6 @@ a:hover {
   color: #9e9fa8;
 }
 
-.current-location {
-  padding-left: 35px;
-  padding-right: 35px;
-}
-
 .weather-now {
   padding-top: 30px;
   text-transform: capitalize;

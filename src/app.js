@@ -49,19 +49,6 @@ function search(event) {
   renderForecast(city);
 }
 
-function currentWeather(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(showPosition);
-}
-
-function showPosition(position) {
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  let apiKey = "t62d70oe1100008354b8807464af7fad";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}`;
-  axios.get(`${apiUrl}`).then(showWeather);
-}
-
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -234,9 +221,6 @@ function renderForecast(city) {
 
 let searchCity = document.querySelector("#search-form");
 searchCity.addEventListener("submit", search);
-
-let currentCity = document.querySelector("#currentButton");
-currentCity.addEventListener("click", currentWeather);
 
 let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", changeToFahrenheit);
