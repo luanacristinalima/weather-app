@@ -182,10 +182,21 @@ function formatWeekDayForecast(timestamp) {
 function displayForecast(response) {
   let forecast = response.data.daily;
 
+  let forecastDayMax;
+  let forecastDayMin;
+
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
 
   forecast.forEach(function (forecastDay, index) {
+    if (isFahrenheit === false) {
+      forecastDayMax = forecastDay.temperature.maximum;
+      forecastDayMin = forecastDay.temperature.minimum;
+    } else {
+      forecastDayMax = convertToFahrenheit(forecastDay.temperature.maximum);
+      forecastDayMin = convertToFahrenheit(forecastDay.temperature.minimum);
+    }
+
     if (index < 6 && index > 0) {
       forecastHTML =
         forecastHTML +
@@ -203,9 +214,9 @@ function displayForecast(response) {
         />
         <p class="future-dates-weather">${forecastDay.condition.description}</p>
         <p><span class="degrees conversion-degrees">${Math.round(
-          forecastDay.temperature.maximum
+          forecastDayMax
         )} </span><span class="degrees celsius-degrees">˚C</span><span class="conversion-degrees"> ${Math.round(
-          forecastDay.temperature.minimum
+          forecastDayMin
         )}</span><span class="celsius-degrees">˚C</span></p>
       </div>`;
     }
