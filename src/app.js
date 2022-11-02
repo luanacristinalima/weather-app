@@ -200,11 +200,11 @@ function displayForecast(response) {
           class="weather-icon"
         />
         <p class="future-dates-weather">${forecastDay.condition.description}</p>
-        <p><span class="degrees conversion-degrees">${Math.round(
+        <p><span class="temp-max"><span class="degrees conversion-degrees">${Math.round(
           forecastDayMax
-        )} </span><span class="degrees celsius-degrees">˚C</span><span class="conversion-degrees"> ${Math.round(
+        )} </span><span class="degrees celsius-degrees">˚C</span></span><span class="temp-min"><span class="conversion-degrees"> ${Math.round(
           forecastDayMin
-        )}</span><span class="celsius-degrees">˚C</span></p>
+        )}</span><span class="celsius-degrees">˚C</span></span></p>
       </div>`;
     }
   });
